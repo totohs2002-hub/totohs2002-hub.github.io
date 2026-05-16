@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>買房需求問卷表 - 永慶不動產</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: #f5f0eb;
+    color: #333;
+    line-height: 1.7;
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+  
+  .header {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #fff;
+    text-align: center;
+    padding: 36px 20px;
+    border-radius: 12px 12px 0 0;
+  }
+  .header h1 { font-size: 28px; margin-bottom: 6px; }
+  .header p { font-size: 14px; opacity: 0.85; }
+
+  form {
+    background: #fff;
+    padding: 32px 28px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .section {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #eee;
+  }
+  .section:last-child { border-bottom: none; margin-bottom: 0; }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 14px;
+    padding-left: 10px;
+    border-left: 4px solid #e67e22;
+  }
+
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  .field .hint {
+    font-size: 12px;
+    color: #999;
+    font-weight: 400;
+    margin-left: 4px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #e67e22;
+    box-shadow: 0 0 0 3px rgba(230,126,34,0.1);
+  }
+  textarea { resize: vertical; min-height: 80px; }
+
+  .radio-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .radio-item {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border: 1px solid #ddd; border-radius: 20px;
+    cursor: pointer; font-size: 14px; transition: all 0.2s;
+  }
+  .radio-item:hover { border-color: #e67e22; background: #fef9f3; }
+  .radio-item input[type="radio"] { accent-color: #e67e22; width: 16px; height: 16px; }
+
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .checkbox-item {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border: 1px solid #ddd; border-radius: 20px;
+    cursor: pointer; font-size: 14px; transition: all 0.2s;
+  }
+  .checkbox-item:hover { border-color: #3498db; background: #f0f7ff; }
+  .checkbox-item input[type="checkbox"] { accent-color: #3498db; width: 16px; height: 16px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
+
+  .range-labels { display: flex; justify-content: space-between; font-size: 12px; color: #999; margin-top: 4px; }
+
+  button[type="submit"] {
+    display: block; width: 100%; margin-top: 24px;
+    padding: 14px; background: #e67e22; color: #fff;
+    border: none; border-radius: 8px; font-size: 17px; font-weight: 700;
+    cursor: pointer; transition: background 0.2s;
+  }
+  button[type="submit"]:hover { background: #d35400; }
+
+  .footer-note {
+    text-align: center; margin-top: 16px;
+    font-size: 12px; color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>🏠 買房需求問卷表</h1>
+    <p>感謝您的信任！請花 3-5 分鐘填寫，讓我為您精準媒合理想好房</p>
+  </div>
+
+  <form id="buyerForm">
+    
+    <!-- 1. 基本資料 -->
+    <div class="section">
+      <div class="section-title">📋 一、基本資料</div>
+      <div class="two-col">
+        <div class="field">
+          <label>姓名 <span class="hint">（必填）</span></label>
+          <input type="text" name="name" required placeholder="王小明">
+        </div>
+        <div class="field">
+          <label>聯絡電話 <span class="hint">（必填）</span></label>
+          <input type="tel" name="phone" required placeholder="0912-345-678">
+        </div>
+      </div>
+      <div class="field">
+        <label>LINE ID / Email <span class="hint">（擇一填寫，方便傳送資料）</span></label>
+        <input type="text" name="contact" placeholder="line123 或 email@example.com">
+      </div>
+      <div class="field">
+        <label>年齡層</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="age" value="20-30"> 20-30 歲</label>
+          <label class="radio-item"><input type="radio" name="age" value="30-40"> 30-40 歲</label>
+          <label class="radio-item"><input type="radio" name="age" value="40-50"> 40-50 歲</label>
+          <label class="radio-item"><input type="radio" name="age" value="50+"> 50 歲以上</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>家庭組成</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="family" value="單身"> 單身</label>
+          <label class="radio-item"><input type="radio" name="family" value="情侶/夫妻"> 情侶／夫妻</label>
+          <label class="radio-item"><input type="radio" name="family" value="小家庭(1子)"> 小家庭（1 子女）</label>
+          <label class="radio-item"><input type="radio" name="family" value="小家庭(2子+)"> 小家庭（2 子女以上）</label>
+          <label class="radio-item"><input type="radio" name="family" value="三代同堂"> 三代同堂</label>
+          <label class="radio-item"><input type="radio" name="family" value="其他"> 其他</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 購屋預算 -->
+    <div class="section">
+      <div class="section-title">💰 二、購屋預算</div>
+      <div class="field">
+        <label>總價預算區間</label>
+        <select name="budget_range">
+          <option value="">請選擇</option>
+          <option value="500萬以下">500 萬以下</option>
+          <option value="500-800萬">500 萬 ~ 800 萬</option>
+          <option value="800-1200萬">800 萬 ~ 1,200 萬</option>
+          <option value="1200-1800萬">1,200 萬 ~ 1,800 萬</option>
+          <option value="1800-2500萬">1,800 萬 ~ 2,500 萬</option>
+          <option value="2500-3500萬">2,500 萬 ~ 3,500 萬</option>
+          <option value="3500萬以上">3,500 萬以上</option>
+        </select>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label>自備款（現有資金）</label>
+          <select name="down_payment">
+            <option value="">請選擇</option>
+            <option value="100萬以下">100 萬以下</option>
+            <option value="100-200萬">100 ~ 200 萬</option>
+            <option value="200-400萬">200 ~ 400 萬</option>
+            <option value="400-600萬">400 ~ 600 萬</option>
+            <option value="600萬以上">600 萬以上</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>是否需要貸款協助？</label>
+          <select name="loan_help">
+            <option value="">請選擇</option>
+            <option value="不需要">不需要，已有配合銀行</option>
+            <option value="需要，希望推薦">需要，希望推薦銀行方案</option>
+            <option value="需要，新青安適用">需要，我是新青安適用對象</option>
+            <option value="不確定">不確定，想了解</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 坪數與格局 -->
+    <div class="section">
+      <div class="section-title">📐 三、坪數與格局需求</div>
+      <div class="two-col">
+        <div class="field">
+          <label>建物坪數需求（不含車位）</label>
+          <select name="size">
+            <option value="">請選擇</option>
+            <option value="15坪以下">15 坪以下（套房）</option>
+            <option value="15-25坪">15 ~ 25 坪（1-2 房）</option>
+            <option value="25-35坪">25 ~ 35 坪（2-3 房）</option>
+            <option value="35-50坪">35 ~ 50 坪（3-4 房）</option>
+            <option value="50-70坪">50 ~ 70 坪（4 房以上）</option>
+            <option value="70坪以上">70 坪以上（大坪數／透天）</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>格局需求</label>
+          <select name="layout">
+            <option value="">請選擇</option>
+            <option value="1房1廳1衛">1 房 1 廳 1 衛</option>
+            <option value="2房1廳1衛">2 房 1 廳 1 衛</option>
+            <option value="2房2廳1衛">2 房 2 廳 1 衛</option>
+            <option value="3房2廳2衛">3 房 2 廳 2 衛</option>
+            <option value="4房2廳2衛">4 房 2 廳 2 衛</option>
+            <option value="4房以上">4 房以上／透天</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>車位需求</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="parking" value="不需要"> 不需要</label>
+          <label class="radio-item"><input type="radio" name="parking" value="需要1個平面"> 需要 1 個平面車位</label>
+          <label class="radio-item"><input type="radio" name="parking" value="需要2個平面"> 需要 2 個以上</label>
+          <label class="radio-item"><input type="radio" name="parking" value="機械可接受"> 機械車位可接受</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 房型偏好 -->
+    <div class="section">
+      <div class="section-title">🏗️ 四、房型偏好</div>
+      <div class="field">
+        <label>偏好物件類型</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="property_type" value="電梯大樓"> 電梯大樓</label>
+          <label class="checkbox-item"><input type="checkbox" name="property_type" value="華廈"> 華廈（10 樓以下）</label>
+          <label class="checkbox-item"><input type="checkbox" name="property_type" value="公寓"> 公寓</label>
+          <label class="checkbox-item"><input type="checkbox" name="property_type" value="透天厝"> 透天厝</label>
+          <label class="checkbox-item"><input type="checkbox" name="property_type" value="別墅"> 別墅</label>
+          <label class="checkbox-item"><input type="checkbox" name="property_type" value="預售屋"> 預售屋</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>屋齡偏好</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="building_age" value="預售/新成屋"> 預售／新成屋</label>
+          <label class="radio-item"><input type="radio" name="building_age" value="5年內"> 5 年內</label>
+          <label class="radio-item"><input type="radio" name="building_age" value="5-15年"> 5 ~ 15 年</label>
+          <label class="radio-item"><input type="radio" name="building_age" value="15-30年"> 15 ~ 30 年</label>
+          <label class="radio-item"><input type="radio" name="building_age" value="30年以上"> 30 年以上</label>
+          <label class="radio-item"><input type="radio" name="building_age" value="不拘"> 不拘</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>偏好樓層</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="floor_pref" value="低樓層(1-3F)"> 低樓層（1-3F）</label>
+          <label class="radio-item"><input type="radio" name="floor_pref" value="中樓層(4-8F)"> 中樓層（4-8F）</label>
+          <label class="radio-item"><input type="radio" name="floor_pref" value="高樓層(9F+)"> 高樓層（9F 以上）</label>
+          <label class="radio-item"><input type="radio" name="floor_pref" value="頂樓可"> 頂樓可接受</label>
+          <label class="radio-item"><input type="radio" name="floor_pref" value="不拘"> 不拘</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>座向偏好</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="orientation" value="坐北朝南"> 坐北朝南</label>
+          <label class="checkbox-item"><input type="checkbox" name="orientation" value="坐南朝北"> 坐南朝北</label>
+          <label class="checkbox-item"><input type="checkbox" name="orientation" value="坐東朝西"> 坐東朝西</label>
+          <label class="checkbox-item"><input type="checkbox" name="orientation" value="坐西朝東"> 坐西朝東</label>
+          <label class="checkbox-item"><input type="checkbox" name="orientation" value="不拘"> 不拘</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 區域偏好 -->
+    <div class="section">
+      <div class="section-title">📍 五、區域偏好（可複選）</div>
+      <div class="field">
+        <label>台中市主要行政區</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="district" value="西屯區"> 西屯區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="南屯區"> 南屯區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="北屯區"> 北屯區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="北區"> 北區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="西區"> 西區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="中區"> 中區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="東區"> 東區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="南區"> 南區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="太平區"> 太平區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="大里區"> 大里區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="烏日區"> 烏日區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="大雅區"> 大雅區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="潭子區"> 潭子區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="豐原區"> 豐原區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="沙鹿區"> 沙鹿區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="龍井區"> 龍井區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="清水區"> 清水區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="其他"> 其他行政區</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>理想地段特徵（可複選）</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近捷運站"> 近捷運站</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近台鐵車站"> 近台鐵車站</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近高鐵站"> 近高鐵站</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近交流道"> 近交流道／快速道路</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近學區"> 近學區</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近商圈"> 近商圈／市場</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近公園"> 近公園綠地</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="重劃區"> 重劃區</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. 生活機能需求 -->
+    <div class="section">
+      <div class="section-title">🛒 六、生活機能需求</div>
+      <div class="field">
+        <label>重視的生活機能（可複選）</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="傳統市場"> 傳統市場</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="超市/全聯"> 超市／全聯</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="便利商店"> 便利商店</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="大型醫院"> 大型醫院</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="診所/藥局"> 診所／藥局</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="國小/國中學區"> 國小／國中學區</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="公園/運動中心"> 公園／運動中心</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="餐廳/商圈"> 餐廳／商圈</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="健身房"> 健身房</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. 特殊需求 -->
+    <div class="section">
+      <div class="section-title">⭐ 七、特殊需求與偏好</div>
+      <div class="field">
+        <label>重視的公設（可複選）</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="警衛管理"> 24H 警衛管理</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="垃圾處理"> 垃圾集中處理</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="健身房"> 健身房</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="游泳池"> 游泳池</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="兒童遊戲室"> 兒童遊戲室</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="閱覽室/交誼廳"> 閱覽室／交誼廳</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="空中花園"> 空中花園</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="包裹代收"> 包裹代收</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>裝修需求</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="renovation" value="全新裝潢"> 希望已有裝潢，可直接入住</label>
+          <label class="radio-item"><input type="radio" name="renovation" value="輕裝修"> 輕裝修即可（油漆、地板）</label>
+          <label class="radio-item"><input type="radio" name="renovation" value="毛胚/自行設計"> 毛胚屋，想自行設計</label>
+          <label class="radio-item"><input type="radio" name="renovation" value="不拘"> 不拘</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>是否有風水考量？</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="fengshui" value="非常重視"> 非常重視</label>
+          <label class="radio-item"><input type="radio" name="fengshui" value="稍微注意"> 稍微注意</label>
+          <label class="radio-item"><input type="radio" name="fengshui" value="不在意"> 不在意</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>其他特殊需求</label>
+        <textarea name="special_needs" placeholder="例如：需要無障礙空間、寵物友善、不要路沖、要邊間⋯⋯"></textarea>
+      </div>
+    </div>
+
+    <!-- 8. 購屋動機與時間 -->
+    <div class="section">
+      <div class="section-title">🎯 八、購屋動機與時程</div>
+      <div class="field">
+        <label>購屋動機</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="motivation" value="首購自住"> 首購自住</label>
+          <label class="radio-item"><input type="radio" name="motivation" value="換屋升級"> 換屋升級</label>
+          <label class="radio-item"><input type="radio" name="motivation" value="投資置產"> 投資置產</label>
+          <label class="radio-item"><input type="radio" name="motivation" value="給子女/父母"> 給子女／父母</label>
+          <label class="radio-item"><input type="radio" name="motivation" value="度假/第二屋"> 度假／第二屋</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>預計購屋時間</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="timeline" value="一個月內"> 一個月內</label>
+          <label class="radio-item"><input type="radio" name="timeline" value="1-3個月"> 1 ~ 3 個月</label>
+          <label class="radio-item"><input type="radio" name="timeline" value="3-6個月"> 3 ~ 6 個月</label>
+          <label class="radio-item"><input type="radio" name="timeline" value="半年以上"> 半年以上</label>
+          <label class="radio-item"><input type="radio" name="timeline" value="還在觀望"> 還在觀望，先了解市場</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. 其他 -->
+    <div class="section">
+      <div class="section-title">💬 九、其他備註</div>
+      <div class="field">
+        <label>還有什麼想讓我們知道的？（自由填寫）</label>
+        <textarea name="notes" placeholder="任何想法、疑問、特殊情況都可以寫在這裡～"></textarea>
+      </div>
+    </div>
+
+    <button type="submit">✅ 送出問卷</button>
+    <p class="footer-note">填寫完畢後，永慶不動產會根據您的需求，為您精選最合適的物件！</p>
+  </form>
+</div>
+
+<script>
+// ===== 設定區（部署時可修改）=====
+const TELEGRAM_BOT_TOKEN = '8796495758:AAELnn3WTN4T7Yr2CtE6yydZ6Wa0TQytc3E';
+const TELEGRAM_CHAT_ID = '1134615577';
+const AGENT_EMAIL = 'totohs2002@gmail.com';  // 收件信箱
+const AGENT_NAME = 'James';
+
+// ===== 表單送出處理 =====
+document.getElementById('buyerForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const submitBtn = this.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = '⏳ 傳送中...';
+  
+  const formData = new FormData(this);
+  const data = {};
+  
+  for (let [key, value] of formData.entries()) {
+    if (key.endsWith('[]')) {
+      const cleanKey = key.slice(0, -2);
+      if (!data[cleanKey]) data[cleanKey] = [];
+      data[cleanKey].push(value);
+    } else {
+      if (data[key]) {
+        if (!Array.isArray(data[key])) data[key] = [data[key]];
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
+    }
+  }
+
+  // Build summary text
+  let summary = '';
+  const sections = [
+    { title: '📋 基本資料', fields: ['name', 'phone', 'contact', 'age', 'family'] },
+    { title: '💰 購屋預算', fields: ['budget_range', 'down_payment', 'loan_help'] },
+    { title: '📐 坪數與格局', fields: ['size', 'layout', 'parking'] },
+    { title: '🏗️ 房型偏好', fields: ['property_type', 'building_age', 'floor_pref', 'orientation'] },
+    { title: '📍 區域偏好', fields: ['district', 'location_feature'] },
+    { title: '🛒 生活機能', fields: ['amenity'] },
+    { title: '⭐ 特殊需求', fields: ['facility', 'renovation', 'fengshui', 'special_needs'] },
+    { title: '🎯 購屋動機', fields: ['motivation', 'timeline'] },
+    { title: '💬 備註', fields: ['notes'] }
+  ];
+
+  sections.forEach(s => {
+    summary += `\n${s.title}\n`;
+    s.fields.forEach(f => {
+      const val = data[f];
+      if (val) {
+        const display = Array.isArray(val) ? val.join('、') : val;
+        summary += `  ${display}\n`;
+      }
+    });
+  });
+
+  const name = data.name || '客戶';
+  const phone = data.phone || '未提供';
+  const now = new Date();
+  const timeStr = now.toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+  
+  // 完整 Telegram 訊息（含聯絡資訊在標題）
+  const telegramMsg = `🏠 新買房需求！\n\n👤 ${name} ｜ 📞 ${phone}\n📅 ${timeStr}\n${summary.trim()}`;
+  
+  // Email 摘要（純文字版）
+  const emailBody = `【買房需求問卷】${name} - ${timeStr}\n\n聯絡電話：${phone}\n${summary.trim()}\n\n---\n此問卷由永慶不動產自動發送`;
+  
+  let results = [];
+
+  // --- 1. Telegram 通知 ---
+  try {
+    const tgResp = await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: telegramMsg,
+          parse_mode: 'HTML'
+        })
+      }
+    );
+    const tgJson = await tgResp.json();
+    if (tgJson.ok) {
+      results.push('✅ Telegram 通知已發送');
+    } else {
+      results.push('⚠️ Telegram 發送失敗：' + (tgJson.description || '未知錯誤'));
+    }
+  } catch (err) {
+    results.push('⚠️ Telegram 連線失敗：' + err.message);
+  }
+
+  // --- 2. Email 通知（透過 mailto + 複製到剪貼簿）---
+  const emailSubject = encodeURIComponent(`🏠【買房需求】${name} 詢問物件`);
+  const emailBodyEncoded = encodeURIComponent(emailBody);
+  const mailtoLink = `mailto:${AGENT_EMAIL}?subject=${emailSubject}&body=${emailBodyEncoded}`;
+  
+  // 複製 email 內容到剪貼簿
+  navigator.clipboard.writeText(emailBody).then(() => {
+    console.log('Email 內容已複製');
+  }).catch(() => {});
+  
+  results.push('📋 問卷摘要已複製到剪貼簿');
+
+  // --- 3. 顯示結果 ---
+  submitBtn.disabled = false;
+  submitBtn.textContent = '✅ 送出問卷';
+  
+  const resultText = results.join('\n');
+  const fullAlert = `🎉 感謝 ${name} 的填寫！\n\n📊 傳送狀態：\n${resultText}\n\n📧 點「確定」後將開啟 Email 視窗，可直接寄出備份。\n\n${AGENT_NAME} 會盡快與您聯繫！`;
+  
+  alert(fullAlert);
+  
+  // 開啟 Email 客戶端
+  window.open(mailtoLink, '_blank');
+});
+</script>
+
+</body>
+</html>
