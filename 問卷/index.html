@@ -8,46 +8,54 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    background: #f5f0eb; color: #333; line-height: 1.7;
+    background: #f5f0eb;
+    color: #333;
+    line-height: 1.7;
   }
   .container { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
   .header {
     background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: #fff; text-align: center; padding: 36px 20px; border-radius: 12px 12px 0 0;
+    color: #fff; text-align: center; padding: 36px 20px;
+    border-radius: 12px 12px 0 0;
   }
   .header h1 { font-size: 28px; margin-bottom: 6px; }
   .header p { font-size: 14px; opacity: 0.85; }
   form {
-    background: #fff; padding: 32px 28px; border-radius: 0 0 12px 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    background: #fff; padding: 32px 28px;
+    border-radius: 0 0 12px 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
   .section { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid #eee; }
   .section:last-child { border-bottom: none; margin-bottom: 0; }
   .section-title {
-    font-size: 18px; font-weight: 700; color: #2c3e50; margin-bottom: 14px;
-    padding-left: 10px; border-left: 4px solid #e67e22;
+    font-size: 18px; font-weight: 700; color: #2c3e50;
+    margin-bottom: 14px; padding-left: 10px; border-left: 4px solid #e67e22;
   }
   .field { margin-bottom: 16px; }
   .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 5px; color: #555; }
   .field .hint { font-size: 12px; color: #999; font-weight: 400; margin-left: 4px; }
-  input[type="text"], input[type="tel"], input[type="email"], input[type="number"],
-  select, textarea {
-    width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px;
-    font-size: 14px; font-family: inherit; transition: border-color 0.2s;
+  input[type="text"], input[type="tel"], input[type="email"], input[type="number"], select, textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid #ddd;
+    border-radius: 6px; font-size: 14px; font-family: inherit; transition: border-color 0.2s;
   }
   input:focus, select:focus, textarea:focus {
     outline: none; border-color: #e67e22; box-shadow: 0 0 0 3px rgba(230,126,34,0.1);
   }
   textarea { resize: vertical; min-height: 80px; }
-  .radio-group, .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
-  .radio-item, .checkbox-item {
+  .radio-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .radio-item {
     display: flex; align-items: center; gap: 6px;
     padding: 8px 14px; border: 1px solid #ddd; border-radius: 20px;
     cursor: pointer; font-size: 14px; transition: all 0.2s;
   }
-  .radio-item:hover, .checkbox-item:hover { border-color: #e67e22; background: #fef9f3; }
-  .checkbox-item:hover { border-color: #3498db; background: #f0f7ff; }
+  .radio-item:hover { border-color: #e67e22; background: #fef9f3; }
   .radio-item input[type="radio"] { accent-color: #e67e22; width: 16px; height: 16px; }
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .checkbox-item {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border: 1px solid #ddd; border-radius: 20px;
+    cursor: pointer; font-size: 14px; transition: all 0.2s;
+  }
+  .checkbox-item:hover { border-color: #3498db; background: #f0f7ff; }
   .checkbox-item input[type="checkbox"] { accent-color: #3498db; width: 16px; height: 16px; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
@@ -76,7 +84,7 @@
         <div class="field"><label>姓名 <span class="hint">（必填）</span></label><input type="text" name="name" required placeholder="王小明"></div>
         <div class="field"><label>聯絡電話 <span class="hint">（必填）</span></label><input type="tel" name="phone" required placeholder="0912-345-678"></div>
       </div>
-      <div class="field"><label>LINE ID / Email <span class="hint">（擇一填寫）</span></label><input type="text" name="contact" placeholder="line123 或 email@example.com"></div>
+      <div class="field"><label>LINE ID / Email <span class="hint">（擇一填寫，方便傳送資料）</span></label><input type="text" name="contact" placeholder="line123 或 email@example.com"></div>
       <div class="field"><label>年齡層</label>
         <div class="radio-group">
           <label class="radio-item"><input type="radio" name="age" value="20-30"> 20-30 歲</label>
@@ -100,55 +108,44 @@
     <div class="section">
       <div class="section-title">💰 二、購屋預算</div>
       <div class="field"><label>總價預算區間</label>
-        <select name="budget_range"><option value="">請選擇</option>
-          <option>500 萬以下</option><option>500 萬 ~ 800 萬</option><option>800 萬 ~ 1,200 萬</option>
-          <option>1,200 萬 ~ 1,800 萬</option><option>1,800 萬 ~ 2,500 萬</option>
-          <option>2,500 萬 ~ 3,500 萬</option><option>3,500 萬以上</option></select>
+        <select name="budget_range"><option value="">請選擇</option><option value="500萬以下">500 萬以下</option><option value="500-800萬">500 萬 ~ 800 萬</option><option value="800-1200萬">800 萬 ~ 1,200 萬</option><option value="1200-1800萬">1,200 萬 ~ 1,800 萬</option><option value="1800-2500萬">1,800 萬 ~ 2,500 萬</option><option value="2500-3500萬">2,500 萬 ~ 3,500 萬</option><option value="3500萬以上">3,500 萬以上</option></select>
       </div>
       <div class="two-col">
-        <div class="field"><label>自備款</label>
-          <select name="down_payment"><option value="">請選擇</option>
-            <option>100 萬以下</option><option>100 ~ 200 萬</option><option>200 ~ 400 萬</option>
-            <option>400 ~ 600 萬</option><option>600 萬以上</option></select>
+        <div class="field"><label>自備款（現有資金）</label>
+          <select name="down_payment"><option value="">請選擇</option><option value="100萬以下">100 萬以下</option><option value="100-200萬">100 ~ 200 萬</option><option value="200-400萬">200 ~ 400 萬</option><option value="400-600萬">400 ~ 600 萬</option><option value="600萬以上">600 萬以上</option></select>
         </div>
-        <div class="field"><label>貸款協助？</label>
-          <select name="loan_help"><option value="">請選擇</option>
-            <option>不需要，已有配合銀行</option><option>需要，希望推薦方案</option>
-            <option>需要，我是新青安適用對象</option><option>不確定，想了解</option></select>
+        <div class="field"><label>是否需要貸款協助？</label>
+          <select name="loan_help"><option value="">請選擇</option><option value="不需要">不需要，已有配合銀行</option><option value="需要，希望推薦">需要，希望推薦銀行方案</option><option value="需要，新青安適用">需要，我是新青安適用對象</option><option value="不確定">不確定，想了解</option></select>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-title">📐 三、坪數與格局</div>
+      <div class="section-title">📐 三、坪數與格局需求</div>
       <div class="two-col">
-        <div class="field"><label>建物坪數（不含車位）</label>
-          <select name="size"><option value="">請選擇</option>
-            <option>15 坪以下</option><option>15 ~ 25 坪</option><option>25 ~ 35 坪</option>
-            <option>35 ~ 50 坪</option><option>50 ~ 70 坪</option><option>70 坪以上</option></select>
+        <div class="field"><label>建物坪數需求（不含車位）</label>
+          <select name="size"><option value="">請選擇</option><option value="15坪以下">15 坪以下（套房）</option><option value="15-25坪">15 ~ 25 坪（1-2 房）</option><option value="25-35坪">25 ~ 35 坪（2-3 房）</option><option value="35-50坪">35 ~ 50 坪（3-4 房）</option><option value="50-70坪">50 ~ 70 坪（4 房以上）</option><option value="70坪以上">70 坪以上（大坪數／透天）</option></select>
         </div>
-        <div class="field"><label>格局</label>
-          <select name="layout"><option value="">請選擇</option>
-            <option>1房1廳1衛</option><option>2房1廳1衛</option><option>2房2廳1衛</option>
-            <option>3房2廳2衛</option><option>4房2廳2衛</option><option>4房以上</option></select>
+        <div class="field"><label>格局需求</label>
+          <select name="layout"><option value="">請選擇</option><option value="1房1廳1衛">1 房 1 廳 1 衛</option><option value="2房1廳1衛">2 房 1 廳 1 衛</option><option value="2房2廳1衛">2 房 2 廳 1 衛</option><option value="3房2廳2衛">3 房 2 廳 2 衛</option><option value="4房2廳2衛">4 房 2 廳 2 衛</option><option value="4房以上">4 房以上／透天</option></select>
         </div>
       </div>
       <div class="field"><label>車位需求</label>
         <div class="radio-group">
           <label class="radio-item"><input type="radio" name="parking" value="不需要"> 不需要</label>
-          <label class="radio-item"><input type="radio" name="parking" value="要1個平面"> 要 1 個平面車位</label>
-          <label class="radio-item"><input type="radio" name="parking" value="要2個以上"> 要 2 個以上</label>
-          <label class="radio-item"><input type="radio" name="parking" value="機械可"> 機械車位可接受</label>
+          <label class="radio-item"><input type="radio" name="parking" value="需要1個平面"> 需要 1 個平面車位</label>
+          <label class="radio-item"><input type="radio" name="parking" value="需要2個平面"> 需要 2 個以上</label>
+          <label class="radio-item"><input type="radio" name="parking" value="機械可接受"> 機械車位可接受</label>
         </div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-title">🏗️ 四、房型偏好</div>
-      <div class="field"><label>物件類型（可複選）</label>
+      <div class="field"><label>偏好物件類型</label>
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="checkbox" name="property_type" value="電梯大樓"> 電梯大樓</label>
-          <label class="checkbox-item"><input type="checkbox" name="property_type" value="華廈"> 華廈</label>
+          <label class="checkbox-item"><input type="checkbox" name="property_type" value="華廈"> 華廈（10 樓以下）</label>
           <label class="checkbox-item"><input type="checkbox" name="property_type" value="公寓"> 公寓</label>
           <label class="checkbox-item"><input type="checkbox" name="property_type" value="透天厝"> 透天厝</label>
           <label class="checkbox-item"><input type="checkbox" name="property_type" value="別墅"> 別墅</label>
@@ -167,14 +164,14 @@
       </div>
       <div class="field"><label>偏好樓層</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="floor_pref" value="低(1-3F)"> 低樓層（1-3F）</label>
-          <label class="radio-item"><input type="radio" name="floor_pref" value="中(4-8F)"> 中樓層（4-8F）</label>
-          <label class="radio-item"><input type="radio" name="floor_pref" value="高(9F+)"> 高樓層（9F 以上）</label>
+          <label class="radio-item"><input type="radio" name="floor_pref" value="低樓層(1-3F)"> 低樓層（1-3F）</label>
+          <label class="radio-item"><input type="radio" name="floor_pref" value="中樓層(4-8F)"> 中樓層（4-8F）</label>
+          <label class="radio-item"><input type="radio" name="floor_pref" value="高樓層(9F+)"> 高樓層（9F 以上）</label>
           <label class="radio-item"><input type="radio" name="floor_pref" value="頂樓可"> 頂樓可接受</label>
           <label class="radio-item"><input type="radio" name="floor_pref" value="不拘"> 不拘</label>
         </div>
       </div>
-      <div class="field"><label>座向偏好（可複選）</label>
+      <div class="field"><label>座向偏好</label>
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="checkbox" name="orientation" value="坐北朝南"> 坐北朝南</label>
           <label class="checkbox-item"><input type="checkbox" name="orientation" value="坐南朝北"> 坐南朝北</label>
@@ -187,7 +184,7 @@
 
     <div class="section">
       <div class="section-title">📍 五、區域偏好（可複選）</div>
-      <div class="field"><label>偏好行政區</label>
+      <div class="field"><label>台中市主要行政區</label>
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="checkbox" name="district" value="西屯區"> 西屯區</label>
           <label class="checkbox-item"><input type="checkbox" name="district" value="南屯區"> 南屯區</label>
@@ -199,17 +196,24 @@
           <label class="checkbox-item"><input type="checkbox" name="district" value="南區"> 南區</label>
           <label class="checkbox-item"><input type="checkbox" name="district" value="太平區"> 太平區</label>
           <label class="checkbox-item"><input type="checkbox" name="district" value="大里區"> 大里區</label>
-          <label class="checkbox-item"><input type="checkbox" name="district" value="其他"> 其他</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="烏日區"> 烏日區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="大雅區"> 大雅區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="潭子區"> 潭子區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="豐原區"> 豐原區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="沙鹿區"> 沙鹿區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="龍井區"> 龍井區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="清水區"> 清水區</label>
+          <label class="checkbox-item"><input type="checkbox" name="district" value="其他"> 其他行政區</label>
         </div>
       </div>
-      <div class="field"><label>地段特徵（可複選）</label>
+      <div class="field"><label>理想地段特徵（可複選）</label>
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近捷運站"> 近捷運站</label>
-          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近台鐵"> 近台鐵車站</label>
-          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近高鐵"> 近高鐵站</label>
-          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近交流道"> 近交流道</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近台鐵車站"> 近台鐵車站</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近高鐵站"> 近高鐵站</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近交流道"> 近交流道／快速道路</label>
           <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近學區"> 近學區</label>
-          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近商圈"> 近商圈</label>
+          <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近商圈"> 近商圈／市場</label>
           <label class="checkbox-item"><input type="checkbox" name="location_feature" value="近公園"> 近公園綠地</label>
           <label class="checkbox-item"><input type="checkbox" name="location_feature" value="重劃區"> 重劃區</label>
         </div>
@@ -217,24 +221,24 @@
     </div>
 
     <div class="section">
-      <div class="section-title">🛒 六、生活機能</div>
+      <div class="section-title">🛒 六、生活機能需求</div>
       <div class="field"><label>重視的生活機能（可複選）</label>
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="checkbox" name="amenity" value="傳統市場"> 傳統市場</label>
-          <label class="checkbox-item"><input type="checkbox" name="amenity" value="超市"> 超市／全聯</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="超市/全聯"> 超市／全聯</label>
           <label class="checkbox-item"><input type="checkbox" name="amenity" value="便利商店"> 便利商店</label>
           <label class="checkbox-item"><input type="checkbox" name="amenity" value="大型醫院"> 大型醫院</label>
-          <label class="checkbox-item"><input type="checkbox" name="amenity" value="診所藥局"> 診所／藥局</label>
-          <label class="checkbox-item"><input type="checkbox" name="amenity" value="學區"> 國小／國中學區</label>
-          <label class="checkbox-item"><input type="checkbox" name="amenity" value="公園運動"> 公園／運動中心</label>
-          <label class="checkbox-item"><input type="checkbox" name="amenity" value="餐廳商圈"> 餐廳／商圈</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="診所/藥局"> 診所／藥局</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="國小/國中學區"> 國小／國中學區</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="公園/運動中心"> 公園／運動中心</label>
+          <label class="checkbox-item"><input type="checkbox" name="amenity" value="餐廳/商圈"> 餐廳／商圈</label>
           <label class="checkbox-item"><input type="checkbox" name="amenity" value="健身房"> 健身房</label>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-title">⭐ 七、特殊需求</div>
+      <div class="section-title">⭐ 七、特殊需求與偏好</div>
       <div class="field"><label>重視的公設（可複選）</label>
         <div class="checkbox-group">
           <label class="checkbox-item"><input type="checkbox" name="facility" value="警衛管理"> 24H 警衛管理</label>
@@ -242,20 +246,20 @@
           <label class="checkbox-item"><input type="checkbox" name="facility" value="健身房"> 健身房</label>
           <label class="checkbox-item"><input type="checkbox" name="facility" value="游泳池"> 游泳池</label>
           <label class="checkbox-item"><input type="checkbox" name="facility" value="兒童遊戲室"> 兒童遊戲室</label>
-          <label class="checkbox-item"><input type="checkbox" name="facility" value="閱覽室"> 閱覽室／交誼廳</label>
+          <label class="checkbox-item"><input type="checkbox" name="facility" value="閱覽室/交誼廳"> 閱覽室／交誼廳</label>
           <label class="checkbox-item"><input type="checkbox" name="facility" value="空中花園"> 空中花園</label>
           <label class="checkbox-item"><input type="checkbox" name="facility" value="包裹代收"> 包裹代收</label>
         </div>
       </div>
       <div class="field"><label>裝修需求</label>
         <div class="radio-group">
-          <label class="radio-item"><input type="radio" name="renovation" value="已有裝潢"> 希望已有裝潢</label>
-          <label class="radio-item"><input type="radio" name="renovation" value="輕裝修即可"> 輕裝修即可</label>
-          <label class="radio-item"><input type="radio" name="renovation" value="毛胚設計"> 毛胚屋，想自行設計</label>
+          <label class="radio-item"><input type="radio" name="renovation" value="全新裝潢"> 希望已有裝潢，可直接入住</label>
+          <label class="radio-item"><input type="radio" name="renovation" value="輕裝修"> 輕裝修即可（油漆、地板）</label>
+          <label class="radio-item"><input type="radio" name="renovation" value="毛胚/自行設計"> 毛胚屋，想自行設計</label>
           <label class="radio-item"><input type="radio" name="renovation" value="不拘"> 不拘</label>
         </div>
       </div>
-      <div class="field"><label>風水考量</label>
+      <div class="field"><label>是否有風水考量？</label>
         <div class="radio-group">
           <label class="radio-item"><input type="radio" name="fengshui" value="非常重視"> 非常重視</label>
           <label class="radio-item"><input type="radio" name="fengshui" value="稍微注意"> 稍微注意</label>
@@ -282,14 +286,14 @@
           <label class="radio-item"><input type="radio" name="timeline" value="1-3個月"> 1 ~ 3 個月</label>
           <label class="radio-item"><input type="radio" name="timeline" value="3-6個月"> 3 ~ 6 個月</label>
           <label class="radio-item"><input type="radio" name="timeline" value="半年以上"> 半年以上</label>
-          <label class="radio-item"><input type="radio" name="timeline" value="觀望中"> 還在觀望，先了解市場</label>
+          <label class="radio-item"><input type="radio" name="timeline" value="還在觀望"> 還在觀望，先了解市場</label>
         </div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-title">💬 九、其他備註</div>
-      <div class="field"><label>還有什麼想讓我們知道的？</label><textarea name="notes" placeholder="任何想法、疑問、特殊情況都可以寫在這裡～"></textarea></div>
+      <div class="field"><label>還有什麼想讓我們知道的？（自由填寫）</label><textarea name="notes" placeholder="任何想法、疑問、特殊情況都可以寫在這裡～"></textarea></div>
     </div>
 
     <button type="submit">✅ 送出問卷</button>
@@ -298,82 +302,68 @@
 </div>
 
 <script>
-// ===== 設定 =====
 const TELEGRAM_BOT_TOKEN='8796495758:AAELnn3WTN4T7Yr2CtE6yydZ6Wa0TQytc3E';
-const TELEGRAM_CHAT_ID = '1134615577';
-const EMAIL_API_URL = 'https://boozy-spry-rockstar.ngrok-free.dev/api/send-email';
+const TELEGRAM_CHAT_ID='1134615577';
+const AGENT_EMAIL='totohs2002@gmail.com';
 
-document.getElementById('buyerForm').addEventListener('submit', async function(e) {
+document.getElementById('buyerForm').addEventListener('submit',async function(e){
   e.preventDefault();
-  const submitBtn = this.querySelector('button[type="submit"]');
-  submitBtn.disabled = true;
-  submitBtn.textContent = '⏳ 傳送中...';
-
-  const fd = new FormData(this);
-  const data = {};
-  for (let [k, v] of fd.entries()) {
-    if (data[k]) {
-      if (!Array.isArray(data[k])) data[k] = [data[k]];
+  const submitBtn=this.querySelector('button[type="submit"]');
+  submitBtn.disabled=true;submitBtn.textContent='⏳ 傳送中...';
+  
+  const formData=new FormData(this);const data={};
+  for(let[k,v]of formData.entries()){
+    if(data[k]){
+      if(!Array.isArray(data[k]))data[k]=[data[k]];
       data[k].push(v);
-    } else { data[k] = v; }
+    }else{data[k]=v;}
   }
-
-  // 摘要整理
-  let summary = '';
-  const secs = [
-    {t:'📋 基本資料', f:['name','phone','contact','age','family']},
-    {t:'💰 購屋預算', f:['budget_range','down_payment','loan_help']},
-    {t:'📐 坪數格局', f:['size','layout','parking']},
-    {t:'🏗️ 房型偏好', f:['property_type','building_age','floor_pref','orientation']},
-    {t:'📍 區域偏好', f:['district','location_feature']},
-    {t:'🛒 生活機能', f:['amenity']},
-    {t:'⭐ 特殊需求', f:['facility','renovation','fengshui','special_needs']},
-    {t:'🎯 購屋動機', f:['motivation','timeline']},
-    {t:'💬 備註', f:['notes']}
+  
+  let summary='';
+  const secs=[
+    {t:'📋 基本資料',f:['name','phone','contact','age','family']},
+    {t:'💰 購屋預算',f:['budget_range','down_payment','loan_help']},
+    {t:'📐 坪數格局',f:['size','layout','parking']},
+    {t:'🏗️ 房型偏好',f:['property_type','building_age','floor_pref','orientation']},
+    {t:'📍 區域偏好',f:['district','location_feature']},
+    {t:'🛒 生活機能',f:['amenity']},
+    {t:'⭐ 特殊需求',f:['facility','renovation','fengshui','special_needs']},
+    {t:'🎯 購屋動機',f:['motivation','timeline']},
+    {t:'💬 備註',f:['notes']}
   ];
-  secs.forEach(s => {
-    let t = '';
-    s.f.forEach(f => { if(data[f]) t += '  ' + (Array.isArray(data[f])?data[f].join('、'):data[f]) + '\n'; });
-    if(t) summary += '\n' + s.t + '\n' + t;
+  secs.forEach(s=>{
+    let t='';s.f.forEach(f=>{if(data[f])t+='  '+(Array.isArray(data[f])?data[f].join('、'):data[f])+'\n';});
+    if(t)summary+='\n'+s.t+'\n'+t;
   });
+  
+  const name=data.name||'客戶',phone=data.phone||'未提供',now=new Date().toLocaleString('zh-TW',{timeZone:'Asia/Taipei'});
+  const tgMsg=`🏠 永慶買房需求！\n\n👤 ${name}\n📞 ${phone}\n📅 ${now}\n${summary.trim()}`;
+  const lineText=`🏠【永慶買房需求】\n👤 ${name}\n📞 ${phone}\n📅 ${now}\n\n== 需求摘要 ==${summary}\n\n---\n本資料已同步備份。`;
+  const emailBody=`【永慶買房需求問卷】${name} - ${now}\n\n聯絡電話：${phone}\n${summary.trim()}\n\n---\n此問卷由永慶不動產自動發送`;
 
-  const name = data.name || '客戶';
-  const phone = data.phone || '未提供';
-  const now = new Date().toLocaleString('zh-TW', {timeZone:'Asia/Taipei'});
-
-  const tgMsg = `🏠 永慶買房需求！\n\n👤 ${name}\n📞 ${phone}\n📅 ${now}\n${summary.trim()}`;
-  const emailBody = `【買房需求問卷】${name} - ${now}\n\n聯絡電話：${phone}\n${summary.trim()}\n\n---\n此問卷由永慶不動產自動發送`;
-
-  let results = [];
+  let results=[];
 
   // 1. Telegram
-  try {
-    const r = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({chat_id:TELEGRAM_CHAT_ID, text:tgMsg, parse_mode:'HTML'})
-    });
-    const j = await r.json();
-    results.push(j.ok ? '✅ Telegram 通知已發送' : '⚠️ Telegram 失敗：'+(j.description||''));
-  } catch(e) { results.push('⚠️ Telegram 連線失敗'); }
+  try{
+    const r=await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:TELEGRAM_CHAT_ID,text:tgMsg,parse_mode:'HTML'})});
+    const j=await r.json();
+    results.push(j.ok?'✅ Telegram 通知發送成功':'⚠️ Telegram 失敗：'+(j.description||''));
+  }catch(e){results.push('⚠️ Telegram 連線失敗');}
 
-  // 2. Gmail 自動寄信（透過 ngrok 端點）
-  try {
-    const r = await fetch(EMAIL_API_URL, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({name, phone, body: emailBody})
-    });
-    const j = await r.json();
-    results.push(j.ok ? '📧 Gmail 備份已寄出' : '⚠️ Gmail 失敗：'+(j.error||''));
-  } catch(e) { results.push('⚠️ Gmail 連線失敗（請確認 Mac 開機且 ngrok 運行中）'); }
+  // 2. Gmail 自動備份（打 Flask 後端 API）
+  try{
+    const r=await fetch('https://boozy-spry-rockstar.ngrok-free.dev/api/send-email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,body:emailBody})});
+    const j=await r.json();
+    results.push(j.ok?'📧 Gmail 備份已寄出':'⚠️ Gmail 失敗：'+(j.error||''));
+  }catch(e){results.push('⚠️ Gmail 連線失敗');}
 
   // 3. 剪貼簿
-  try { await navigator.clipboard.writeText(emailBody); results.push('📋 需求已複製到剪貼簿'); }
-  catch(e) { results.push('⚠️ 剪貼簿複製失敗'); }
+  try{await navigator.clipboard.writeText(lineText);results.push('📋 需求已複製到剪貼簿');}catch(e){results.push('⚠️ 複製失敗');}
 
-  submitBtn.disabled = false;
-  submitBtn.textContent = '✅ 送出問卷';
+  submitBtn.disabled=false;submitBtn.textContent='✅ 送出問卷';
 
-  alert(`🎉 感謝 ${name} 的填寫！\n\n📊 傳送狀態：\n${results.join('\n')}\n\n宏昇會盡快與您聯繫！`);
+  alert(`🎉 感謝 ${name} 的填寫！\n\n📊 傳送狀態：\n${results.join('\n')}\n\n點確定後將開啟 LINE，您可直接轉傳問卷內容！`);
+  window.open(`https://line.me/R/share?text=${encodeURIComponent(lineText)}`,'_blank');
 });
 </script>
 
